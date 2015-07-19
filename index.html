@@ -4,14 +4,32 @@ layout: default
 
 <div class="home">
   <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+    {% for post in paginator.posts %}
+    <li>
+      <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
+      <h2>
+        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+      </h2>
+    </li>
     {% endfor %}
   </ul>
+
+  <div>
+    {% if paginator.page == 1 %}
+    {% if paginator.total_pages != 1 %}
+    <span>1</span>
+    {% endif %}
+    {% else %}
+    <a href="/">1</a>
+    {% endif %}
+
+    {% for count in (2..paginator.total_pages) %}
+    {% if count == paginator.page %}
+    <span>{{ count }}</span>
+    {% else %}
+    <a href="/page{{ count }}">{{ count }}</a>
+    {% endif %}
+    {% endfor %}
+  </div>
 </div>

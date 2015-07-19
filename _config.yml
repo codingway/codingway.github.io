@@ -4,3 +4,6 @@ email: codersimple@gmail.com
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://codersimple.github.io/" # the base hostname & protocol for your site
 description: Hello World!
+
+paginate: 10
+paginate_path: "page:num"
