@@ -1,0 +1,22 @@
+---
+layout: default
+title: "Category"
+---
+<div>
+	<div>
+		{% for category in site.categories %}
+		<li style="list-style:none;"><h3>{{ category | first }} :</h3>
+			<ul>
+				{% for posts in category %}
+				{% for post in posts %}
+				{% if post.url %}
+				<li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+				{% endif %}
+				{% endfor %}
+				{% endfor %}
+			</ul>
+			<br/>
+		</li>
+		{% endfor %}
+	</div>
+</div>
