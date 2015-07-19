@@ -1,5 +1,6 @@
-posts_dir       = "_posts"
+posts_dir    = "_posts"
 posts_ext    = "markdown"
+posts_author = "codersimple"
 
 task :post, :title do |t, args|
   if args.title
@@ -16,6 +17,7 @@ task :post, :title do |t, args|
     post.puts "layout: post"
     post.puts "title: \"#{title.gsub(/&/,'&amp;')}\""
     post.puts "date: #{Time.now.strftime('%Y-%m-%d %H:%M:%S')}"
+    post.puts "author: \"#{posts_author}\""
     post.puts "categories: "
     post.puts "---"
   end
