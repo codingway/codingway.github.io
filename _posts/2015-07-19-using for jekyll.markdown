@@ -2,7 +2,7 @@
 layout: post
 title: "using for jekyll"
 date: 2015-07-19 21:25:07
-author: "codersimple"
+author: "YorkYan"
 categories: jekyll
 ---
 

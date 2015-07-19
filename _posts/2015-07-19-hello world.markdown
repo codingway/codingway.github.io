@@ -2,7 +2,7 @@
 layout: post
 title: "hello world"
 date: 2015-07-19 20:48:46
-author: "codersimple"
+author: "YorkYan"
 categories: jekyll
 ---
 

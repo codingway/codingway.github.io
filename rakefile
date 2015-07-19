@@ -1,6 +1,6 @@
 posts_dir    = "_posts"
 posts_ext    = "markdown"
-posts_author = "codersimple"
+posts_author = "YorkYan"
 
 task :post, :title do |t, args|
   if args.title
