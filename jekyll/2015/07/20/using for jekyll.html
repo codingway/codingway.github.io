@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>using for jekyll</title>
+  <meta name="description" content="jekyll 主页">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://codersimple.github.io//jekyll/2015/07/20/using%20for%20jekyll.html">
+  <link rel="alternate" type="application/rss+xml" title="YorkYan's Blog" href="http://codersimple.github.io//feed.xml" />
+
+  <!-- google code prettify -->
+  <link rel="stylesheet" href="/google-code-prettify/prettify.css" type="text/css"/>
+  <script src="/google-code-prettify/prettify.js"></script>
+  <script type="text/javascript" src="/google-code-prettify/jquery-1.11.3.js"></script>
+  <script>
+  $(function(){
+    $("pre").addClass("prettyprint");
+    prettyPrint();
+  })
+ </script>
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">YorkYan's Blog</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/category.html">Category</a>
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+	<header class="post-header">
+		<h1 class="post-title">using for jekyll</h1>
+		<p class="post-meta">Jul 20, 2015 • YorkYan</p>
+	</header>
+
+	<article class="post-content">
+		<h3 id="jekyll-">jekyll 主页</h3>
+
+<ul>
+  <li><a href="http://jekyllrb.com/">英文站点</a></li>
+  <li><a href="http://jekyllcn.com/">中文站点</a></li>
+</ul>
+
+<h3 id="jekyll--1">jekyll 安装教程</h3>
+
+<p>官方默认提供在 linux 下的安装教程，没有提供 window 下的安装教程：</p>
+
+<ul>
+  <li><a href="http://jekyllrb.com/docs/installation/">linux 下官方安装教程</a></li>
+  <li><a href="http://jekyll-windows.juthilo.com/">window 下非官方安装教程</a></li>
+</ul>
+
+<h3 id="window--jekyll-">window 下 jekyll 自定义安装教程</h3>
+
+<ol>
+  <li>
+    <p>安装 Ruby 和 Ruby DevKit</p>
+
+    <p>注意选择自己对应的平台的版本：<a href="http://rubyinstaller.org/downloads/">下载 Ruby 和 Ruby DevKit</a></p>
+  </li>
+  <li>
+    <p>关联 Ruby DevKit 到 Ruby</p>
+
+    <pre><code> cd C:\RubyDevKit
+ ruby dk.rb init
+ ruby dk.rb install
+</code></pre>
+
+    <p>执行 <code>ruby dk.rb init</code> 出现如下错误：</p>
+
+    <pre><code> Invalid configuration. Please fix 'config.yml.
+</code></pre>
+
+    <p>解决办法如下，向 config.yml 添加(添加 Ruby 的安装路径即可，但是注意前面加上 <code>-</code> 和 空格，并且要两行或者以上)：</p>
+
+    <pre><code> - D:\Ruby200-x64
+ - D:\Ruby200-x64
+</code></pre>
+  </li>
+  <li>
+    <p>安装 jekyll</p>
+
+    <p>执行 <code>gem install jekyll</code> 出现错误：</p>
+
+    <pre><code> Could not find a valid gem 'jekyll' (&gt;= 0), here is why: Unable to download data from https://rubygems.org/ - Errno::ETIMEDOUT: Operation timed out - connect(2) (https://rubygems.org/latest_specs.4.8.gz)
+</code></pre>
+
+    <p>解决办法有俩种：</p>
+
+    <ul>
+      <li>添加 SSL 证书（这里不做说明，可自行研究）</li>
+      <li>
+        <p>更换源</p>
+
+        <p>将默认源：https://rubygems.org/ 更换为：http://rubygems.org/</p>
+
+        <pre><code>  gem sources --remove https://rubygems.org/
+  gem sources -a http://rubygems.org/
+</code></pre>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Welcome to jekyll</p>
+
+    <pre><code> jekyll new blog
+ cd blog
+ jekyll serve
+</code></pre>
+
+    <p>这里预览时会出现问题，是由于在上面我并安装语法高亮组件照成的，解决办法是使用默认的代码块语法：</p>
+
+    <pre><code> ......
+ Jekyll also offers powerful support for code snippets:
+
+ {\% highlight ruby \%}
+ def print_hi(name)
+   puts "Hi, #{name}"
+ end
+ print_hi('Tom')
+ #=&gt; prints 'Hi, Tom' to STDOUT.
+ {\% endhighlight \%}
+ ......
+</code></pre>
+
+    <p>改成：</p>
+
+    <pre><code> ......
+ Jekyll also offers powerful support for code snippets:
+
+     def print_hi(name)
+       puts "Hi, #{name}"
+     end
+     print_hi('Tom')
+     #=&gt; prints 'Hi, Tom' to STDOUT.
+
+ ......
+</code></pre>
+  </li>
+  <li>
+    <p>添加语法高亮</p>
+
+    <p>官方默认使用 Pygments 作为语法高亮，这里我并没有使用它，因为我希望在编写文档时使用默认的代码块语法，通过 jquery + google-code-prettfy 来实现。</p>
+
+    <ul>
+      <li><a href="http://jquery.com/">下载 jquery</a></li>
+      <li><a href="https://code.google.com/p/google-code-prettify/downloads/list">下载 google-code-prettfy</a></li>
+    </ul>
+
+    <p>将解压出来的 google-code-prettify 文件夹放到 blog 跟目录下，并将获取到的 jquery 脚本 jquery-x.x.x.js 放入 google-code-prettify 文件夹中，在 _include/head.html 中的 head 标签中添加如下代码：</p>
+
+    <pre><code> &lt;!-- google code prettify --&gt;
+ &lt;link rel="stylesheet" href="/google-code-prettify/prettify.css" type="text/css"/&gt;
+ &lt;script src="/google-code-prettify/prettify.js"&gt;&lt;/script&gt;
+ &lt;script type="text/javascript" src="/google-code-prettify/jquery-x.x.x.js"&gt;&lt;/script&gt;
+ &lt;script&gt;
+ $(function(){
+ $("pre").addClass("prettyprint");
+     prettyPrint();
+ })
+ &lt;/script&gt;
+</code></pre>
+  </li>
+  <li>
+    <p>添加多说评论系统</p>
+
+    <blockquote>
+      <p>Tips: 使用时注意去掉转义符 <code>\</code></p>
+    </blockquote>
+
+    <ul>
+      <li>首先<a href="http://duoshuo.com/create-site/">获取多说通用代码</a>，并保存为 duoshuo.html</li>
+      <li>
+        <p>编辑 duoshuo.html:</p>
+
+        <p>将要编辑的部分：</p>
+
+        <pre><code>  &lt;!-- 多说评论框 start --&gt;
+  &lt;div class="ds-thread" data-thread-key="请将此处替换成文章在你的站点中的ID" data-title="请替换成文章的标题" data-url="请替换成文章的网址"&gt;&lt;/div&gt;
+  &lt;!-- 多说评论框 end --&gt;
+</code></pre>
+
+        <p>改为</p>
+
+        <pre><code>  &lt;!-- 多说评论框 start --&gt;
+  &lt;div class="ds-thread" {\% if page.id %}data-thread-key="{\{ page.id }}"{\% endif %}  data-title="{\% if page.title %}{\{ page.title }} - {\% endif %}{\{ site.title }}" data-url={\% if post.url %}data-url=""{\% endif %}&gt;&lt;/div&gt;
+  &lt;!-- 多说评论框 end --&gt;
+</code></pre>
+      </li>
+      <li>
+        <p>添加到每篇文章的尾部，编辑 _layout 文件夹下的 post.html 为：</p>
+
+        <pre><code>  &lt;div class="post"&gt;
+      ......
+
+      {\% include duoshuo.html %}
+  &lt;/div&gt;
+</code></pre>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>添加上一篇，下一篇文章的索引</p>
+
+    <p>在 _layout/post.html 中添加如下：</p>
+
+    <pre><code> {\% if page.previous.url %}
+ &lt;div&gt; 
+     &lt;p&gt;Previous&amp;laquo; &lt;a href="{\{page.previous.url}}"&gt;{\{page.previous.title}}&lt;/a&gt;&lt;/p&gt;
+ &lt;/div&gt;
+ {\% endif %} 
+
+ {\% if page.next.url %} 
+ &lt;div align=right&gt;
+     &lt;p&gt;Next&amp;raquo; &lt;a href="{\{page.next.url}}"&gt;{\{page.next.title}}&lt;/a&gt;&lt;/p&gt; 
+ &lt;/div&gt; 
+ {\% endif %}
+</code></pre>
+  </li>
+  <li>
+    <p>开启分页功能</p>
+
+    <p>在 _config.yml 中配置，默认 10 篇文章为一页：</p>
+
+    <pre><code> paginate: 1
+ paginate_path: "page:num"
+</code></pre>
+
+    <p>修改 index.html 中导入文章的方法及添加页码：</p>
+
+    <pre><code> ......
+ &lt;div class="home"&gt;
+   &lt;ul class="post-list"&gt;
+     {\% for post in paginator.posts %}
+     &lt;li&gt;
+       &lt;span class="post-meta"&gt;{\{ post.date | date: "%b %-d, %Y" }}&lt;/span&gt;
+
+       &lt;h2&gt;
+         &lt;a class="post-link" href="{\{ post.url | prepend: site.baseurl }}"&gt;{\{ post.title }}&lt;/a&gt;
+       &lt;/h2&gt;
+     &lt;/li&gt;
+     {\% endfor %}
+   &lt;/ul&gt;
+
+   &lt;div&gt;
+     {\% if paginator.page == 1 %}
+     {\% if paginator.total_pages != 1 %}
+     &lt;span&gt;1&lt;/span&gt;
+     {\% endif %}
+     {\% else %}
+     &lt;a href="/"&gt;1&lt;/a&gt;
+     {\% endif %}
+
+     {\% for count in (2..paginator.total_pages) %}
+     {\% if count == paginator.page %}
+     &lt;span&gt;&lt;/span&gt;
+     {\% else %}
+     &lt;a href="/page"&gt;&lt;/a&gt;
+     {\% endif %}
+     {\% endfor %}
+   &lt;/div&gt;
+ &lt;/div&gt;
+</code></pre>
+  </li>
+</ol>
+
+	</article>
+
+	
+	<div> 
+		<p>Previous&laquo; <a href="/jekyll/2015/07/20/welcome-to-jekyll.html" title="Previous Post: Welcome to Jekyll!">Welcome to Jekyll!</a></p>
+	</div>
+	 
+
+	
+
+	<!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="/jekyll/2015/07/20/using for jekyll"  data-title="using for jekyll - YorkYan's Blog" data-url=></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"codersimple"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</div>
+      </div>
+    </div>
+
+    <!-- <footer class="site-footer">
+
+  <div class="wrapper">
+      Contact with me: <a href="mailto:codersimple@gmail.com">codersimple@gmail.com</a>
+  </div>
+
+</footer>
+ -->
+
+  </body>
+
+</html>
