@@ -3,5 +3,108 @@ layout: post
 title: "centos7"
 date: 2015-09-17 11:51:38
 author: "YorkYan"
-categories: 
+categories: centos
 ---
+
+1. 添加 epel-release 源
+
+		yum install epel-release
+
+2. yum update 和 yum upgrade
+
+	升级所有包同时也升级软件和系统内核:
+
+		yum update
+
+	只升级所有包，不升级软件和系统内核:
+
+		yum upgrade
+
+3. 软件的安装与卸载：
+
+	安装：
+
+		yum install software-name
+
+	卸载：
+  
+		yum autoremove software-name
+
+4. 安装 wget
+
+		yum install wget
+
+5. 查看提供相关命令的包
+
+		yum provides commond
+
+6. 添加、移除开机启动服务(这里以 nginx 为例)
+
+	添加：
+
+		systemctl enable nginx
+
+	移除：
+
+		systemctl disable nginx
+
+
+7. selinux
+
+	1. 查看 selinux 状态：
+
+			sestatus -v
+	
+			或者：
+	
+			getenforce
+
+	2. 设置 selinux:
+
+			临时设置：
+				setenforce 0(0 为关闭， 1 为打开)
+	
+			永久设置(重启生效)：
+				修改 /etc/selinux/config 文件
+				将 SELINUX=enforcing 改为 SELINUX=disabled
+
+8. 防火墙
+
+	1. 查看防火墙的状态
+	
+			firewall-cmd --state
+	
+	2. 防火墙的打开，关闭
+	
+			systemctl start firewalld
+			systemctl stop firewalld
+	
+	3. 重启防火墙
+	
+			firewall-cmd --reload
+	
+		或者：
+	
+			systemctl restart firewalld
+	
+	4. 查看防火墙打开的服务情况
+	
+			firewall-cmd --list-all
+	
+	5. 打开关闭特定的服务和端口
+	
+		打开：
+	
+			firewall-cmd --permanent --zone=public --add-service=http 
+			firewall-cmd --permanent --zone=public --add-service=https
+			firewall-cmd --permanent --zone=public --add-port=9090/tcp
+	
+		关闭：
+	
+			firewall-cmd --permanent --zone=public --remove-service=http 
+			firewall-cmd --permanent --zone=public --remove-service=https
+			firewall-cmd --permanent --zone=public --remove-port=9090/tcp
+
+9. 
+		
+		
