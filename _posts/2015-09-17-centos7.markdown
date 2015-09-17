@@ -1,0 +1,7 @@
+---
+layout: post
+title: "centos7"
+date: 2015-09-17 11:51:38
+author: "YorkYan"
+categories: 
+---
