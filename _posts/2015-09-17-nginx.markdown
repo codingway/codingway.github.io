@@ -3,5 +3,9 @@ layout: post
 title: "nginx"
 date: 2015-09-17 11:45:17
 author: "YorkYan"
-categories: 
+categories: nginx
 ---
+
+1. 添加 epel-release 源
+
+		yum install epel-release
